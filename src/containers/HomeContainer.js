@@ -3,25 +3,31 @@ import classes from './css/home.module.scss';
 import art from './../img/lol.png';
 import groupart from './../img/Groupe 5.png';
 import ContactHome from '../components/ui/contactHome';
-//mport Technologies from '../components/ui/Technologies';
+//import Technologies from '../compoenents/ui/Technologies';
 import Services from './Services';
 import DevProccess from './DevProccess';
-//import CardProject from '../components/ui/CardProject';
+//import CardProject from '../compoenents/ui/CardProject';
 import Typing from 'react-typing-animation';
+import logo from './../img/logo.svg';
+import imnt from './../img/imnt.svg';
+import igc from './../img/igc.png';
+import weather from './../img/weather.svg';
+//import portofolio from './../img/portfolio.svg';
+import note from './../img/note.svg';
 import ContactSection from './ContactSection';
 import { InterButtonOnHover } from './../components/ui/Inter2Button';
 //import withApi from './../hoc/withApi';
 //import { getAllPortfolios } from './../requests/requests';
 import { useDidMount } from './../hooks/useLifeCycle';
 import contentLoading from '../hoc/contentLoading';
-import Logo from '../components/layout/Logo';
+//import Logo from '../compoenents/layout/Logo';
 
 
 
-const HomeContainer = (match) => {
+const HomeContainer=({ match}) => {
 	const [ bo, changebo ] = useState(false);
-	const [ state, setState ] = useState('Bienvenue');
-	const [ state1, setState1 ] = useState('Vneuron');
+	const [ state, setState ] = useState('Lets build your next ');
+	const [ state1, setState1 ] = useState('big idea');
 	let width = '180px';
 	if (window.innerWidth > 768) {
 		width = '500px';
@@ -29,14 +35,14 @@ const HomeContainer = (match) => {
 	// useDidMount(() => {
 	// 	getAllPortfolios.call();
 	// });
-
+	
 	if (window.innerWidth < 768) {
 		width = '300px';
 	}
 	useEffect(
 		() => {
 			if (window.innerWidth < 768) {
-				setState('Vneuron');
+				setState('vNEURON');
 				setState1('Vneuron');
 			}
 		},
@@ -60,11 +66,11 @@ const HomeContainer = (match) => {
 				<div className={classes.description}>
 					<Typing loop speed={200}>
 						<span className={classes.title} style={{ color: 'black' }}>
-						Créeons une bonne relation <br></br> avec nos clients
+							Fullstack Developer
 						</span>
 						<Typing.Backspace count={20} />
 					</Typing>
-					
+					<p>I help Customers beautifully build their Solutions. </p>
 				</div>
 			</div>
 			
@@ -86,7 +92,7 @@ const HomeContainer = (match) => {
 			<div className={classes.process}>
 				<DevProccess />
 			</div>
-			
+		
 			<div id="contact" style={{ overflow: 'hidden' }}>
 				<ContactSection />
 			</div>

@@ -1,13 +1,24 @@
 .holder {
     width: 50%;
-
+    flex:2;
     padding: 20px;
   }
+  .container {
+    display:flex;
+ 
+  display:flex;
+
+   padding: 20px;}
   ul {
     list-style-type: none;
+    flex:2
   
   }
-  img {
+  .card {
+    flex:2
+  }
+   
+.imag {
    
     display: block;
     width: 50px;

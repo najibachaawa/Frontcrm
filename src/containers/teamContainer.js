@@ -48,9 +48,9 @@ class List extends React.Component{
             )
       
       }
-       handleShow = (data)=>{ 
+       handleShow = ()=>{ 
         this.setState({
-          member:data,
+       
           visible:true
         })
       
@@ -64,7 +64,7 @@ class List extends React.Component{
             return(
               
                 <ul    key={member.id}>
-                <img src={member.image} className="img"  onClick={this.handleShow(member) } />
+                <img src={member.image} className="imag"  onClick={this.handleShow } />
                 
                 <Badge status={member.status ?"success":"error"} />
                  {member.name}
@@ -76,17 +76,19 @@ class List extends React.Component{
           </ul>)})
         
               return(
+                <div className="container">
                 <div className="holder">
-        <input type="text" classNAme="search" onChange={this.searchHandler} />
-       {members}
-    <div>
+              <input type="text" classNAme="search" onChange={this.searchHandler} />
+                {members}
 
-    </div>
-         {this.state.visible? <CardBody>   hhh
-                     </CardBody> :""}
-          
-          </div>
+            </div>
+            <div className="card">
+            {this.state.visible? <CardBody >   <SingleMember></SingleMember>
+            </CardBody> :""}
+            </div>
+            </div>
         )
+
        
 }
 }
