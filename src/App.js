@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+//import { store, persistor } from './store';
+import 'antd/dist/antd.css';
+import RootContainer from './containers/RootContainer';
 import './App.css';
+import AOS from 'aos';
+//import AOS from "./node_modules/aos/dist/aos.esm.js";
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App= () => {
+	return (
+		
+					<BrowserRouter basename={process.env.PUBLIC_URL}>
+						<Route path="/" component={RootContainer} />
+					</BrowserRouter>
+			
+	);
+};
 
 export default App;

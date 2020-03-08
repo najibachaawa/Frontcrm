@@ -1,0 +1,128 @@
+.art {
+  position: absolute;
+  right: 0px;
+  top: 2px;
+  overflow: hidden;
+}
+.groupart {
+  position: absolute;
+  right: -200px;
+  top: -102px;
+  clip: rect(200px, 5000px, 5000px, 0px);
+}
+.title {
+  font-weight: bolder;
+  font-size: 40px;
+  color: #2A878F;
+  display:flex;
+  overflow:hidden;
+  white-space:nowrap;
+  
+}
+.title1{
+  animation: showup 7s infinite;
+}
+.span{
+  margin-left:-355px;
+  animation: slidein 7s infinite;
+}
+.title2{
+  width:0px;
+  padding-left: 10px;
+  animation: reveal 7s infinite;
+}
+.description {
+  font-size: 15px;
+  margin-top:-27px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper {
+  padding: 50px;
+  width: 100%;
+}
+.contact {
+  margin-top: 2%;
+}
+.Technologies {
+  margin-top: 2%;
+}
+.process{
+  margin:50px;
+}
+.buttons{
+  display:inline-flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+@keyframes showup {
+  0% {opacity:0;}
+  20% {opacity:1;}
+  80% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@keyframes slidein {
+  0% { margin-left:-800px; }
+  20% { margin-left:-800px; }
+  35% { margin-left:0px; }
+  100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+  0% {opacity:0;width:0px;}
+  20% {opacity:1;width:0px;}
+  30% {width:355px;}
+  80% {opacity:1;}
+  100% {opacity:0;width:355px;}
+}
+
+@media only screen and (max-width: 767px) {
+
+  // .wrapper {
+  //   padding: 50px;
+  //  width: 100%;
+  //   overflow: hidden;
+  // }
+  .title {
+    font-weight: bolder;
+    font-size: 30px;
+    color: #2A878F;
+  }
+  .title1{
+    font-size: 27px;
+  }
+  .title2{
+    font-size: 27px;
+  }
+  .description {
+    width: 300px;
+    margin-top:-5%;
+    font-size: 15px;
+  }
+  .wrapper {
+    padding: 30px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .Technologies {
+    margin-top: 1%;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-top:10px;
+  }
+  .art {
+    position: relative;
+    right: 0px;
+    top: -80px;
+    overflow: hidden;
+  }
+  .groupart {
+    display: none;
+    overflow: hidden;
+  }
+}

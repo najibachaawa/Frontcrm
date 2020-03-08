@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "animate.css"
 import './index.css';
 import App from './App';
+import 'antd/dist/antd.css'
+import 'tachyons';
+import 'bootstrap/dist/css/bootstrap.css';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));

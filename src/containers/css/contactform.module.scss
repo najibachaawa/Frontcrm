@@ -1,0 +1,19 @@
+.input{
+    margin-bottom: 7%;
+    width:450px;
+}
+.button{
+    margin-top: 10%;
+   margin-left: 35%;
+}
+@media screen and (max-width: 780px) {
+    .input{
+        margin-bottom: 7%;
+        width:300px;
+    }
+    .button{
+        margin-top: 10%;
+       margin-left: 35%;
+    }
+   
+}

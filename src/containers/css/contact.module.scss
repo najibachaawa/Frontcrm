@@ -1,0 +1,16 @@
+.wrapper{
+    display: flex;
+    padding : 30px;
+}
+.img1{
+  width: 800px;  
+}
+@media screen and (max-width: 780px) {
+.wrapper{
+    flex-direction: column-reverse;
+    padding:25px;
+}
+.img1{
+    width: 400px;  
+  }
+}
