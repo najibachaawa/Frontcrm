@@ -26,8 +26,8 @@ import contentLoading from '../hoc/contentLoading';
 
 const HomeContainer=({ match}) => {
 	const [ bo, changebo ] = useState(false);
-	const [ state, setState ] = useState('Lets build your next ');
-	const [ state1, setState1 ] = useState('big idea');
+	const [ state, setState ] = useState('Bienvenue ');
+	const [ state1, setState1 ] = useState('Vneuron');
 	let width = '180px';
 	if (window.innerWidth > 768) {
 		width = '500px';
@@ -66,17 +66,17 @@ const HomeContainer=({ match}) => {
 				<div className={classes.description}>
 					<Typing loop speed={200}>
 						<span className={classes.title} style={{ color: 'black' }}>
-							Fullstack Developer
+					
 						</span>
 						<Typing.Backspace count={20} />
 					</Typing>
-					<p>I help Customers beautifully build their Solutions. </p>
+					
 				</div>
 			</div>
 			
 			<div className={classes.buttons}>
 				
-				<InterButtonOnHover link="#contact">Contact me</InterButtonOnHover>
+				<InterButtonOnHover link="#contact">Contact </InterButtonOnHover>
 			</div>
 
 			<div className={` animated slideInRight ${classes.art}`}>
@@ -96,6 +96,7 @@ const HomeContainer=({ match}) => {
 			<div id="contact" style={{ overflow: 'hidden' }}>
 				<ContactSection />
 			</div>
+			
 		</div>
 	);
 };

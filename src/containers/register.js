@@ -5,7 +5,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Footer from '../components/layout/Footer'
 import Header from '../components/layout/Header'
 import {Link} from 'react-router-dom'
-import { vnueron} from '../img/vnueron.jpg'
+import vnueron from '../img/vnueron.PNG'
 
 class  Register extends React.Component{
    handleSubmit =(e)=>{

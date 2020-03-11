@@ -18,36 +18,36 @@ state={
   [{
     id: 1,
     avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/dvdwinden/128.jpg",
-    firstName: "Benjamin",
-    lastName: "Jacobi",
-    email:"email@gmail.com",  speciality: "abc"
+    prénom :"Benjamin",
+    nom: "Jacobi",
+    email:"email@gmail.com",  spécialité: "abc"
    
    
   }, {
     id: 2,
     avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/antonyzotov/128.jpg",
-    firstName: "Clementina",
-    lastName: "Hahn",
+    prénom :"Clementina",
+    nom: "Hahn",
     email:"email@gmail.com",
-    speciality: "abc",
+    spécialité: "abc",
    
   }],
   NewUserModal:false,
   EditUserModal:false,
   newUserData:{
-firstName:'',
-lastName:'',
+prénom:'',
+nom:'',
 email:'',
-speciality:'',
+spécialité:'',
 current:'',id:''
 
   },
   editUserData:{
 id:'',
-firstName:'',
-lastName:'',
+prénom:'',
+nom:'',
 email:'',
-speciality:''
+spécialité:''
 
   }
 }
@@ -73,10 +73,10 @@ AddUser=(e)=>{
   users.push(this.state.newUserData);
 
   this.setState({users,NewUserModal:false,newUserData:{
-   firstName:'',
-   lastName:'',
+   prénom:'',
+   nom:'',
    email:'',
-   speciality:'' 
+   spécialité:'' 
   }}
   );
 
@@ -84,25 +84,25 @@ AddUser=(e)=>{
  
 }
 updateUser(){
-  let{firstName,lastName,email,speciality}=this.state.editUserData;
+  let{prénom,nom,email,spécialité}=this.state.editUserData;
 this.setState(
   {
   EditUserModal:false,
   id:'',
-  firstName:'',
-  lastName:'',
+  prénom:'',
+  nom:'',
   email:'',
-  speciality:'' 
+  spécialité:'' 
 
   })
       
 }
 
-editUser(id,firstName,lastName,email,speciality){
+editUser(id,prénom,nom,email,spécialité){
   this.setState(
   {
     editUserData:
-    {id,firstName,lastName,email,speciality},EditUserModal:!this.state.EditUserModal
+    {id,prénom,nom,email,spécialité},EditUserModal:!this.state.EditUserModal
   
   })
   
@@ -119,27 +119,7 @@ onDelete=(e,index)=>{
 )*/
 }
 
- myFunction=() =>{
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
+ 
 
 
     render()
@@ -153,15 +133,15 @@ onDelete=(e,index)=>{
          
         <tr    key={user.id}>
                            <td>{user.id}</td>
-                           <td>{user.firstName}</td>
-                           <td>{user.lastName}</td>
+                           <td>{user.prénom}</td>
+                           <td>{user.nom}</td>
                            <td>{user.email}</td>
-                           <td>{user.speciality}</td>
+                           <td>{user.spécialité}</td>
                            <td>
                             <Button type="success" size="sm" className="mr-1" 
-                            onClick={this.editUser.bind(this,user.id,user.firstName,user.lastName,user.email,user.speciality)}>edit</Button>{' '}
+                            onClick={this.editUser.bind(this,user.id,user.prénom,user.nom,user.email,user.spécialité)}>modifier</Button>{' '}
                           
-                             <button className="btn btn-danger"onClick={this.onDelete} >delete</button>{' '}
+                             <button className="btn btn-danger"onClick={this.onDelete} >supprimer</button>{' '}
 
                              </td>
                         
@@ -171,23 +151,23 @@ onDelete=(e,index)=>{
         return(
             
         <article   className="mw8 center bg-white shadow-7 br3 pa3 pa4-ns mv3 ba b--black-10">
-              <Button className="my-2" color="success" onClick={this.toggleNewUserModal.bind(this)}>Add Member</Button>
+              <Button  color="primary"className="my-2"   onClick={this.toggleNewUserModal.bind(this)}>Ajouter un nouveau membre</Button>
               <Modal isOpen={this.state.NewUserModal} toggle={this.toggleNewUserModal.bind(this)} >
-                <ModalHeader toggle={this.toggleNewUserModal.bind(this)}>Add new Member</ModalHeader>
+                <ModalHeader toggle={this.toggleNewUserModal.bind(this)}>Ajouter un nouveau membre</ModalHeader>
                 <ModalBody>
              
-               <Label for="firstName">firstName</Label>
-               <Input type="text"  id="firstName" value={this.state.newUserData.firstName}
+               <Label for="prénom">prénom</Label>
+               <Input type="text"  id="prénom" value={this.state.newUserData.prénom}
                   onChange={(e)=>{
                     let {newUserData}=this.state;
-                    newUserData.firstName=e.target.value;
+                    newUserData.prénom=e.target.value;
                     this.setState(newUserData)
                   }}/>
-               <Label for="lastName">lastName</Label>
-               <Input type="text" id="lastName" value={this.state.newUserData.lastName} 
+               <Label for="nom">nom</Label>
+               <Input type="text" id="nom" value={this.state.newUserData.nom} 
                 onChange={(e)=>{
                     let {newUserData}=this.state;
-                    newUserData.lastName=e.target.value;
+                    newUserData.nom=e.target.value;
                     this.setState(newUserData)
                   }} />
                <Label for="Email">Email</Label>
@@ -197,11 +177,11 @@ onDelete=(e,index)=>{
                   newUserData.email=e.target.value;
                   this.setState(newUserData)
                 }} />
-               <Label for="Speciality">Speciality</Label>
-               <Input type="select"  id="Speciality" value={this.state.newUserData.speciality}
+               <Label for="spécialité">spécialité</Label>
+               <Input type="select"  id="spécialité" value={this.state.newUserData.spécialité}
                 onChange={(e)=>{
                   let {newUserData}=this.state;
-                  newUserData.speciality=e.target.value;
+                  newUserData.spécialité=e.target.value;
                   this.setState(newUserData)
                 }}>
                  <option>1</option>
@@ -213,8 +193,8 @@ onDelete=(e,index)=>{
               
               </ModalBody>
           <ModalFooter>
-          <Button color="primary" onClick={this.AddUser.bind(this)}  >Add New User</Button>{' '}
-          <Button color="secondary" onClick={this.toggleNewUserModal.bind(this)}>Cancel</Button>
+          <Button color="primary" onClick={this.AddUser.bind(this)}  >Ajouter un nouveau</Button>{' '}
+          <Button color="secondary" onClick={this.toggleNewUserModal.bind(this)}>Annuler</Button>
         </ModalFooter>
            </Modal>
 
@@ -225,21 +205,21 @@ onDelete=(e,index)=>{
 
 
            <Modal isOpen={this.state.EditUserModal} toggle={this.toggleEditUserModal.bind(this)} >
-                <ModalHeader toggle={this.toggleEditUserModal.bind(this)}>Edit</ModalHeader>
+                <ModalHeader toggle={this.toggleEditUserModal.bind(this)}>Modifier</ModalHeader>
                 <ModalBody>
              
-               <Label for="firstName">firstName</Label>
-               <Input type="text"  id="firstName" value={this.state.editUserData.firstName}
+               <Label for="prénom">prénom</Label>
+               <Input type="text"  id="prénom" value={this.state.editUserData.prénom}
                   onChange={(e)=>{
                     let {editUserData}=this.state;
-                    editUserData.firstName=e.target.value;
+                    editUserData.prénom=e.target.value;
                     this.setState(editUserData)
                   }}/>
-               <Label for="lastName">lastName</Label>
-               <Input type="text" id="lastName" value={this.state.editUserData.lastName} 
+               <Label for="nom">nom</Label>
+               <Input type="text" id="nom" value={this.state.editUserData.nom} 
                 onChange={(e)=>{
                     let {editUserData}=this.state;
-                    editUserData.lastName=e.target.value;
+                    editUserData.nom=e.target.value;
                     this.setState(editUserData)
                   }} />
                <Label for="Email">Email</Label>
@@ -249,11 +229,11 @@ onDelete=(e,index)=>{
                   editUserData.email=e.target.value;
                   this.setState(editUserData)
                 }} />
-               <Label for="Speciality">Speciality</Label>
-               <Input type="select"  id="Speciality" value={this.state.editUserData.speciality}
+               <Label for="spécialité">spécialité</Label>
+               <Input type="select"  id="spécialité" value={this.state.editUserData.spécialité}
                 onChange={(e)=>{
                   let {editUserData}=this.state;
-                  editUserData.speciality=e.target.value;
+                  editUserData.spécialité=e.target.value;
                   this.setState(editUserData)
                 }}>
                  <option>1</option>
@@ -265,20 +245,20 @@ onDelete=(e,index)=>{
               
               </ModalBody>
           <ModalFooter>
-          <Button color="primary" onClick={this.updateUser.bind(this)}  >Edit</Button>{' '}
-          <Button color="secondary" onClick={this.toggleEditUserModal.bind(this)}>Cancel</Button>
+          <Button color="primary" onClick={this.updateUser.bind(this)}  >Modifier</Button>{' '}
+          <Button color="secondary" onClick={this.toggleEditUserModal.bind(this)}>Annuler</Button>
         </ModalFooter>
            </Modal>
-           <input type="text" id="myInput" onkeyup={this.myFunction} placeholder="Search for names.."/>
+          
         <Table id="myTable" >
 
                        <thead>
                          <tr>
                            <th>#</th>
-                           <th>firstName</th>
-                           <th>lastName</th>
+                           <th>prénom</th>
+                           <th>nom</th>
                            <th>email</th>
-                           <th>speciality</th>
+                           <th>spécialité</th>
                           
                            <th>actions</th>
                          </tr>

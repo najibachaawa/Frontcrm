@@ -1,0 +1,15 @@
+.container {
+    display:flex;
+    width:500px;
+    flex-direction: row;
+
+}
+.box1{
+    flex:1
+}
+.box2{
+    flex:2
+}
+.box3{
+    flex:1
+}

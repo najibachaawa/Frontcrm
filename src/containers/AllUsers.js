@@ -1,103 +1,125 @@
-import { Table } from 'antd';
-import React from 'react';
-export default class All  extends React.Component  {
+import React from 'react'
+import { Table, Input, Button } from 'antd';
+import Highlighter from 'react-highlight-words';
+import { SearchOutlined } from '@ant-design/icons';
+import HeaderUser from '../components/layout/HeaderUser'
 
-
+const data = 
+  
+  [{
+    id: 1,
+    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/dvdwinden/128.jpg",
+    prénom :"Benjamin",
+    nom: "Jacobi",
+    email:"email@gmail.com",  spécialité: "abc"
    
-      
-      
-    render()  {
-        const columns = [
-            {
-              title: 'Name',
-              dataIndex: 'name',
-              filters: [
-                {
-                  text: 'Joe',
-                  value: 'Joe',
-                },
-                {
-                  text: 'Jim',
-                  value: 'Jim',
-                },
-                {
-                    text: 'Submenu',
-                    value: 'Submenu',
-                    children: [
-                      {
-                        text: 'Green',
-                        value: 'Green',
-                      },
-                      {
-                        text: 'Black',
-                        value: 'Black',
-                      },
-                    ],
-                  }
-               
-              ],
-              // specify the condition of filtering result
-              // here is that finding the name started with `value`
-              onFilter: (value, record) => record.name.indexOf(value) === 0,
-              sorter: (a, b) => a.name.length - b.name.length,
-              sortDirections: ['descend'],
-            },
-            {
-              title: 'Age',
-              dataIndex: 'age',
-              defaultSortOrder: 'descend',
-              sorter: (a, b) => a.age - b.age,
-            },
-            {
-              title: 'Address',
-              dataIndex: 'address',
-              filters: [
-                {
-                  text: 'London',
-                  value: 'London',
-                },
-                {
-                  text: 'New York',
-                  value: 'New York',
-                },
-              ],
-              filterMultiple: false,
-              onFilter: (value, record) => record.address.indexOf(value) === 0,
-              sorter: (a, b) => a.address.length - b.address.length,
-              sortDirections: ['descend', 'ascend'],
-            },
-          ];
-          
-          const data = [
-            {
-              key: '1',
-              name: 'John Brown',
-              age: 32,
-              address: 'New York No. 1 Lake Park',
-            },
-            {
-              key: '2',
-              name: 'Jim Green',
-              age: 42,
-              address: 'London No. 1 Lake Park',
-            },
-            {
-              key: '3',
-              name: 'Joe Black',
-              age: 32,
-              address: 'Sidney No. 1 Lake Park',
-            },
-            {
-              key: '4',
-              name: 'Jim Red',
-              age: 32,
-              address: 'London No. 2 Lake Park',
-            },
-          ];
-          
-          
+   
+  }, {
+    id: 2,
+    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/antonyzotov/128.jpg",
+    prénom :"Clementina",
+    nom: "Hahn",
+    email:"email@gmail.com",
+    spécialité: "abc",
+   
+  }]
 
-        return(
-            <Table columns={columns} dataSource={data}  />   
-        )
-    }}
+
+ export default class All extends React.Component {
+  state = {
+    searchText: '',
+    searchedColumn: '',
+  };
+
+  getColumnSearchProps = dataIndex => ({
+    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+      <div style={{ padding: 8 }}>
+        <Input
+          ref={node => {
+            this.searchInput = node;
+          }}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onPressEnter={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{ width: 188, marginBottom: 8, display: 'block' }}
+        />
+        <Button
+          type="primary"
+          onClick={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+          icon={<SearchOutlined />}
+          size="small"
+          style={{ width: 90, marginRight: 8 }}
+        >
+          Search
+        </Button>
+        <Button onClick={() => this.handleReset(clearFilters)} size="small" style={{ width: 90 }}>
+          Reset
+        </Button>
+      </div>
+    ),
+    filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
+    onFilter: (value, record) =>
+      record[dataIndex]
+        .toString()
+        .toLowerCase()
+        .includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: visible => {
+      if (visible) {
+        setTimeout(() => this.searchInput.select());
+      }
+    },
+    render: text =>
+      this.state.searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+          searchWords={[this.state.searchText]}
+          autoEscape
+          textToHighlight={text.toString()}
+        />
+      ) : (
+        text
+      ),
+  });
+
+  handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    this.setState({
+      searchText: selectedKeys[0],
+      searchedColumn: dataIndex,
+    });
+  };
+
+  handleReset = clearFilters => {
+    clearFilters();
+    this.setState({ searchText: '' });
+  };
+
+  render() {
+    const columns = [
+      {
+        title: 'Nom',
+        dataIndex: 'nom',
+        key: 'nom',
+        width: '30%',
+        ...this.getColumnSearchProps('nom'),
+      },
+      {
+        title: 'Email',
+        dataIndex: 'email',
+        key: 'email',
+        width: '20%',
+        ...this.getColumnSearchProps('email'),
+      },
+      {
+        title: 'Spécialité',
+        dataIndex: 'spécialité',
+        key: 'spécialité',
+        ...this.getColumnSearchProps('spécialité'),
+      },
+    ];
+
+    return <div><HeaderUser></HeaderUser>
+    <Table columns={columns} dataSource={data} /></div>;
+  }
+}

@@ -3,7 +3,7 @@ import classes from "./css/services.module.scss";
 import ServiceCard from "../components/ui/ServiceCard";
 
 const valeurs = [
-  { title: "Nos Valeurs", description: "Notre modèle d’entreprise repose sur cinq valeurs  : Respect - Engagement - Ambition" }
+  { title: "Nos Valeurs", description: "Notre modèle d’entreprise repose sur plusiers valeurs  : Respect - Engagement - Ambition" }
 ];
 
 const Services = () => {

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './css/Team.css'
 import {Button,Card,CardBody} from 'reactstrap'
-import {Badge}from 'antd'
-import SingleMember from './Singlememeber'
-class List extends React.Component{
+import {Badge,List}from 'antd'
+
+import HeaderUser from './../components/layout/HeaderUser'
+import Footer from './../components/layout/Footer'
+class TeamContainer extends React.Component{
 
     state={
       members:[ {
@@ -11,6 +13,7 @@ class List extends React.Component{
         name: "Natarajah",
         phoneNumber: "0938073320",
         status:"actif",
+        topic:"topic1",
         image: "https://s3.amazonaws.com/uifaces/faces/twitter/dvdwinden/128.jpg",
       },
       {
@@ -48,13 +51,12 @@ class List extends React.Component{
             )
       
       }
-       handleShow = ()=>{ 
+      handleShow = data => {
         this.setState({
-       
-          visible:true
-        })
-      
-       }
+          member: data,
+          visible: true
+        });
+      };
 
   
     render() {
@@ -62,34 +64,53 @@ class List extends React.Component{
         const isSelected =this.state.members.id
         let members=this.state.members.map((member,index)=>{
             return(
-              
-                <ul    key={member.id}>
-                <img src={member.image} className="imag"  onClick={this.handleShow } />
+            
+                <List   key={member.id}>
+               <img
+            src={member.image}
+            className="imag"
+            onClick={() => this.handleShow(member)}
+            alt="img-logo"
+                  />
                 
-                <Badge status={member.status ?"success":"error"} />
-                 {member.name}
-         
-         
-            
-            
-         
-          </ul>)})
-        
+           <Badge status={member.status ?"success":"error"} />
+            {member.name}
+                  
+            </List>)})
+      
               return(
-                <div className="container">
-                <div className="holder">
-              <input type="text" classNAme="search" onChange={this.searchHandler} />
-                {members}
+                
+                <div>
+               <HeaderUser></HeaderUser>
+               <br></br>
+                <div   style={{marginLeft: "200px" }}>
+          <input type="text" className="search" onChange={this.searchHandler} 
+            style={{marginBottom: "20px" }}/>
+             <div></div>
+            {members}
+           </div>
+        <div   className="card" style={{marginLeft: "400px",marginTop:"-350px",width:"300px" }}>
+        {this.state.visible ? (
+          <Card style={{ backgroundColor: "white" ,width:"300px"}}>
+            <CardBody>
+             <img src={this.state.member.image}
+            className="imag" ></img>
+              <h1>{this.state.member.name}</h1>
+              <h2>{this.state.member.topic}</h2>
+              <Button >Laisser un commentaire</Button>
+            </CardBody>
+          </Card>
 
-            </div>
-            <div className="card">
-            {this.state.visible? <CardBody >   <SingleMember></SingleMember>
-            </CardBody> :""}
-            </div>
-            </div>
-        )
+        ) : (
+          ""
+        )}
+        </div>
+      
+      </div>
+       
+        );
 
        
 }
 }
-export default List
+export default TeamContainer

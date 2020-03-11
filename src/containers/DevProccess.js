@@ -6,8 +6,8 @@ import Button from "../components/ui/Button";
 import contentLoading from "../hoc/contentLoading";
 
 const data = [
-  { content: "doit régner dans la relation entre le groupe, les membres de ses équipes, et les clients, ...", title: "RESPECT" },
-  { content: "Votre relation avec les clients : engagement sur les délais, sur la qualité de nos travaux et de nos livrables, qui devrait être à la hauteur des attentes de nos clients. ", title: "L’engagemenT" },
+  { content: "doit régner dans la relation entre le groupe, les membres de ses équipes, et les clients, ...", title: "Respect" },
+  { content: "Votre relation avec les clients : engagement sur les délais, sur la qualité de nos travaux et de nos livrables, qui devrait être à la hauteur des attentes de nos clients. ", title: "Engagement" },
   { content: " Vneuron est une GREAT PLACE TO WORK pour ses collaborateurs", title: "L’Ambiance " }
 ];
 

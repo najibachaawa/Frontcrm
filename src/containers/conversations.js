@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './css/Team.css'
-import {Button} from 'reactstrap'
-import {Badge}from 'antd'
+import './css/conversation.css'
+import {Button} from 'antd'
+import {Badge,Card}from 'antd'
+import { Typography } from 'antd';
+import HeaderUser from '../components/layout/HeaderUser';
 class conversation extends React.Component{
 
     state={
@@ -28,7 +31,7 @@ class conversation extends React.Component{
       },
       {
         id: 4,
-        name: "Shiva",
+        client: "Shiva",
         phoneNumber: "0638546385",
         image:
           "https://38.media.tumblr.com/4249a67e76729e9126ef3f70e741c323/tumblr_inline_mixcyvIPd81qz4rgp.jpg"
@@ -49,29 +52,44 @@ class conversation extends React.Component{
     render() {
         let Conversations=this.state.Conversations.map((conversation,index)=>{
         return(
-           
-            <ul    key={conversation.id}>
+        
+       
+            <Card key={conversation.id} classNAme="card" >
+          
+            <img src={conversation.image} className="imag" />
             {conversation.client}
-            <img src={conversation.image} className="img" />
-            {conversation.topic}
-            <Button type="success" size="sm" className="mr-1" >Voir conversation</Button>
-      
-           
+            <div className="topic"  style={{marginLeft:'200px', marginTop:"-50px"}} >
+            {conversation.topic }
+            </div>
+            <br></br>
+            <br></br>
+            <Button type="primary" size="sm" className="mr-1" >Voir conversation</Button>
+            
+            <div>
+            <Badge status={conversation.status ?"success":"error"}  />
+            </div>
              
          
          
             
             
          
-          </ul>)})
+          </Card>
+          )})
         
               return(
-                <div className="holder">
-        <input type="text" classNAme="search" onChange={this.searchHandler} />
-       {Conversations}
-
+                <div >
+                  <HeaderUser></HeaderUser>
+                  <br></br>
+                  <div style= {{marginLeft:"200px"}}>
+                   <Typography >Tous les conversations</Typography> 
+                
+              <input type="text" className="search" onChange={this.searchHandler} />
+             <hr></hr>
+             {Conversations}
+             </div>
           
-          </div>
+             </div>
         )
     
 }

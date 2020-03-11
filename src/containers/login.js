@@ -3,8 +3,9 @@
  import classes from "../components/layout/css/header.module.scss";
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Footer from '../components/layout/Footer'
-import Header from '../components/layout/Header'
+import HeaderUser from '../components/layout/HeaderUser'
 import {Link} from 'react-router-dom'
+import Auth from './auth'
 
 class  Login  extends React.Component{
     handleSubmit =(e)=>{
@@ -17,8 +18,8 @@ class  Login  extends React.Component{
   render(){
   return (
     <div>
-     <Header></Header>
-
+   <HeaderUser></HeaderUser>
+     
       <article className="mw5 center bg-white shadow-5 br3 pa3 pa4-ns mv3 ba b--black-10">
     <Form
       name="normal_login"
@@ -29,29 +30,29 @@ class  Login  extends React.Component{
       
     >
       <Form.Item
-        name="username"
+        name="email"
         rules={[
           {
             required: true,
-            message: 'Please input your Username!',
+            message: 'Taper votre email!',
           },
         ]}
       >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="email" />
       </Form.Item>
       <Form.Item
         name="password"
         rules={[
           {
             required: true,
-            message: 'Please input your Password!',
+            message: 'taper votre mot de passe',
           },
         ]}
       >
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
-          placeholder="Password"
+          placeholder="Mot de passe"
         />
       </Form.Item>
       <Form.Item>
@@ -60,22 +61,25 @@ class  Login  extends React.Component{
         </Form.Item>
 
         <a className="login-form-forgot" href="">
-          Forgot password
+         Mot de passe oublié
         </a>
       </Form.Item>
 
       <Form.Item>
   
         <Button type="primary" htmlType="submit" className="login-form-button"
-         onClick={this.handleSubmit}>
-          Log in
+         onClick={()=>{Auth.login(()=>{
+          this.props.history.push('/home')
+         })}}>
+           Se connecter
+          
         </Button>
       
-        Or <Link to="/register">register now!</Link>
+       <Link to="/register">S'inscrire!</Link>
       </Form.Item>
     </Form>
     </article>
-    <Footer></Footer>
+
      </div>
     
   );
